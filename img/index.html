@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Untitled3</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="ActivePresenter" />
+    <meta name="author" content="pablo" />
+    <meta name="description" content="" />
+    <meta name="date" content="11/27/2019" />
+    <meta name="company" content="" />
+    <meta name="homepage" content="" />
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta name="autoincrement" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana,sans-serif;
+            margin: 0;
+        }
+
+        .ap-slide {
+            display: none;
+        }
+
+        .slideshow-container {
+            position: relative;
+            margin: auto;
+            max-width:1280px;
+        }
+
+        .right-hint, .left-hint {
+            position: absolute;
+            top: 0px;
+            width: 30%;
+            height: 100%;
+        }
+
+        .right-hint {
+            right: 0px;
+        }
+
+        .left-hint {
+            left: 0px;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .left-hint:hover>.prev, .right-hint:hover>.next {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .ap-slide-name {
+            color: #404040;
+            font-size: 18px;
+            padding: 8px 12px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active {
+            background-color: #717171;
+        }
+
+        #dot-container {
+            text-align: center;
+            max-width:1280px;
+            position: relative; 
+            margin: auto;
+        }
+
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media only screen and (max-width: 300px) {
+            .prev, .next, .text {
+                font-size: 11px;
+            }
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        var slideIndex = 1;
+        function makeShowNthSlideFunction(n) {
+            return function () { currentSlide(n); };
+        }
+        function init() {
+            var dotsContainer, slides, nSlideCount, i, dot;
+            dotsContainer = document.getElementById("dot-container");
+            slides = document.getElementsByClassName("ap-slide");
+            nSlideCount = slides.length;
+            for (i = 1; i <= nSlideCount; ++i) {
+                dot = document.createElement('span');
+                dot.className = 'dot';
+                dot.onclick = makeShowNthSlideFunction(i);
+                dotsContainer.appendChild(dot);
+            }
+            showSlides(slideIndex);
+        }
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        function showSlides(n) {
+            var i, slides, dots;
+            slides = document.getElementsByClassName("ap-slide");
+            dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+
+</head>
+<body onload="init();">
+    <div class="slideshow-container">
+        <!-- slides -->
+        <div class="ap-slide fade">
+<img src = "images/Slide_2.png" />
+<div class="ap-slide-name">1/3. logos1</div>
+</div>
+<div class="ap-slide fade">
+<img src = "images/Slide_3.png" />
+<div class="ap-slide-name">2/3. logos2</div>
+</div>
+<div class="ap-slide fade">
+<img src = "images/Slide_4.png" />
+<div class="ap-slide-name">3/3. logos3</div>
+</div>
+
+        <div class="left-hint"><a class="prev" onclick="plusSlides(-1)">&#10094;</a></div>
+        <div class="right-hint"><a class="next" onclick="plusSlides(1)">&#10095;</a></div>
+    </div>
+
+    <br>
+    <div id="dot-container"></div>
+</body>
+</html> 
